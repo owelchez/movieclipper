@@ -2,9 +2,37 @@
 
 NAME: #Movie Clipper
 
-BRIEF DESCRIPTION OF APP: Friendly App that will show trailers, information about the movie, ratings on the film, and gives a brief synopsis on the film, also will show upcoming films, showtimes on other films, shows nearby theatres based on location through the use of input of zipcode and state.
+Coding Requirements
 
-WHAT the APP CAN DO: This will app will retrieve information of upcoming shows and will save in the database of all the recent searches, will be able to select 'thumbs up' or 'thumbs down', give a score to the movie, what movie is the best rated, give it a favorites Section, and all this gets stored in a database. You will have a function to give it a like or dislike. Have watched, boolean statement...bE able to review the movie theatre(is it clean?, rowdy?, how's the service?, what kind of chairs do they have?' does the movie theater have IMax, 3D Imax?...etc...')
+Must use a Node and Express Web Server
+Must be backed by a MySQL Database with a Sequelize ORM
+Must have both GET and POST routes for retrieving and adding new data
+Must incorporate Basic SEO Strategies
+Must incorporate Basic Testing Framework
+Must be deployed using Heroku (with Data)
+Must utilize at least one new library, package, or technology that we haven’t discussed
+Must have a polished frontend / UI
+Must have folder structure that meets MVC Paradigm
+Must meet good quality coding standards (indentation, scoping, naming)
+Nice to Haves
+
+Utilize Handlebars for Server-Side Templating
+Incorporate Authentication (JSON Web Tokens, Sessions, Etc.)
+Use an existing public dataset to power the database
+Create a migration strategy for sharing data across teammembers.
+Presentation Requirements
+
+You will also be responsible for preparing a 10 minute presentation.
+This will be a formal presentation.
+One in which you explain in detail:
+Your overall application’s concept
+The motivation for its development
+Your design process
+The technologies you used (and briefly how they work)
+A demonstration of its functionality
+Directions for future development
+Treat the presentation seriously!
+Talking intelligently about tech > doing tech sometimes.
 
 On the GET Route, we retrieve the movies that are most favored.
 

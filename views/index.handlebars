@@ -1,0 +1,45 @@
+<h1 id="textColor">Movie Clipper
+<span id="burgerGlyph" class="glyphicon glyphicon-align-justify" aria-hidden="true"></span>
+</h1>
+
+
+
+
+<div id="devouredContainer">
+<ul>
+  {{#each devoured}}
+  <li>
+      <div class="burger" id="textColor">
+      <span>{{this.id}}</span> 
+      <span>{{this.burger_name}}</span> 
+      </div>
+
+      <form action="/delete?_method=DELETE" method="POST">
+        <input type="hidden" name="id" value="{{this.id}}">
+        <button type="submit">
+        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+        Trash it!
+        </button>
+      </form>
+   </li>   
+  {{/each}}
+</ul>
+</div>
+
+
+
+
+
+
+<div id="textInput">
+<form method="POST" action="/create" class="create-form">
+<input type="text" name="burger_name">
+</div> 
+
+  <button id="textColor" id="submit" type="submit">Place Order</button>
+  <p id="textColor">Enter name of garbage you want to consume and Click the "Place Order" button or press "Enter".</p>
+</form>
+
+
+
+
