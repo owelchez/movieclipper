@@ -1,13 +1,17 @@
-body
+#background
 {
   background-color: #3F8BFA;
+}
+
+.input-group
+{
+  margin-top: 10px;
 }
 
 .btn-primary
 {
   margin-top: 10px;
 }
-
 
 
 .container

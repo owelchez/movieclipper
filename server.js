@@ -21,7 +21,7 @@ var connection = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
   password : '',
-  database : 'movieclip'
+  database : 'burgers_db'
 });
 
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -33,7 +33,6 @@ app.set('view engine', 'handlebars');
 //Serve static content for the app from the "public" directory in the application directory.
 app.use(express.static(__dirname + '/public'));
 
-
 connection.connect(function (err) {
   if (err) {
     console.error('error connecting: ' + err.stack);
@@ -41,6 +40,7 @@ connection.connect(function (err) {
   }
   console.log('connected as id ' + connection.threadId);
 });
+
 
 
 //--------------------
@@ -105,18 +105,26 @@ app.use(passport.session());
 /*******************************************************/
 
 
-/*app.get('/login', function(req, res) {
+app.get('/', function(req, res) {
   if (req.user) {
-    res.sendFile(path.join(__dirname, '/survey.html'));
+    res.render('home', { name: req.user.username});
   } else {
     res.redirect('/login');
   }
-})*/
-
-app.get('/signup', function(req, res) {
-  res.sendFile(path.join(__dirname, '/signup.html'));
 })
 
-app.post('/login', passport.authenticate('local', { successRedirect: '/trivia', failureRedirect: '/login'}));
+app.get('/signup', function(req, res) {
+  res.render('signup');
+})
 
-app.listen(3000)
+app.get('/login', function(req, res) {
+  res.render('login');
+})
+
+app.post('/login', passport.authenticate('local', { successRedirect: '/', failureRedirect: '/login'}));
+
+
+
+var PORT = 3000;
+app.listen(PORT);
+console.log('Hackin\' n Slacking on PORT ' + PORT);
