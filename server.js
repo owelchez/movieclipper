@@ -21,7 +21,7 @@ var connection = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
   password : '',
-  database : 'burgers_db'
+  database : 'movieClip'
 });
 
 app.use(bodyParser.urlencoded({ extended: false }))
