@@ -21,7 +21,7 @@ var connection = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
   password : '',
-  database : 'burgers_db'
+  database : 'movieClip'
 });
 
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -110,6 +110,7 @@ app.get('/', function(req, res) {
     res.render('home', { name: req.user.username});
   } else {
     res.redirect('/login');
+    console.log("Unable to login!");
   }
 })
 
