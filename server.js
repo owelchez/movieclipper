@@ -17,12 +17,12 @@ var User = require('./models').User;
 var app = express(); // DUH!
 
 /*MySQL connection initialization*/
-var connection = mysql.createConnection({
+/*var connection = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
   password : '',
   database : 'movieClip'
-});
+});*/
 
 app.use(bodyParser.urlencoded({ extended: false }))
 
@@ -33,13 +33,13 @@ app.set('view engine', 'handlebars');
 //Serve static content for the app from the "public" directory in the application directory.
 app.use(express.static(__dirname + '/public'));
 
-connection.connect(function (err) {
+/*connection.connect(function (err) {
   if (err) {
     console.error('error connecting: ' + err.stack);
     return;
   }
   console.log('connected as id ' + connection.threadId);
-});
+});*/
 
 
 
@@ -110,7 +110,6 @@ app.get('/', function(req, res) {
     res.render('home', { name: req.user.username});
   } else {
     res.redirect('/login');
-    console.log("Unable to login!");
   }
 })
 
@@ -122,10 +121,42 @@ app.get('/login', function(req, res) {
   res.render('login');
 })
 
-app.post('/login', passport.authenticate('local', { successRedirect: '/', failureRedirect: '/login'}));
+app.get('/error', function(req, res) {
+  res.render('error');
+})
+
+app.post('/login', passport.authenticate('local', { successRedirect: '/', failureRedirect: '/error'}));
 
 
 
 var PORT = 3000;
 app.listen(PORT);
 console.log('Hackin\' n Slacking on PORT ' + PORT);
+
+
+// Fake Schema
+
+// Questions
+//   1  | "when was ben hur made"
+// id | query |
+
+// Answers
+// 1  | "1974"  | false
+// 2  | "1977"  | true
+// id | info  | status  |
+
+
+// QuestionAnswers
+// 
+// qID    | aID   
+  // 1    | 1
+  // 1    | 2
+
+
+  // UserAnswers
+  // uID| aID
+  // 1| 2
+
+/*var q1 = Questions.getOne({where:{id: 1}})
+  q1.getAnswers({where:{status: true}})
+  q1.getAnswers();*/
