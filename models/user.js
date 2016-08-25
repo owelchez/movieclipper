@@ -14,3 +14,6 @@ module.exports = function(sequelize, DataTypes) {
   });
   return User;
 };
+
+
+//Store.belongsToMany(models.Manager, {through: models.ManagerStore});

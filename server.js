@@ -105,28 +105,28 @@ app.use(passport.session());
 /*******************************************************/
 
 
-app.get('/', function(req, res) {
+/*app.get('/', function(req, res) {
   if (req.user) {
     res.render('home', { name: req.user.username});
   } else {
     res.redirect('/login');
   }
+})*/
+
+app.get('/', function(req, res) {
+  res.render('home');
 })
 
-app.get('/signup', function(req, res) {
-  res.render('signup');
-})
-
-app.get('/login', function(req, res) {
+/*app.get('/login', function(req, res) {
   res.render('login');
 })
 
 app.get('/error', function(req, res) {
   res.render('error');
-})
+})*/
 
-app.post('/login', passport.authenticate('local', { successRedirect: '/', failureRedirect: '/error'}));
-
+/*app.post('/login', passport.authenticate('local', { successRedirect: '/', failureRedirect: '/error'}));
+*/
 
 
 var PORT = 3000;
