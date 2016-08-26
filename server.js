@@ -7,8 +7,10 @@ var methodOverride = require('method-override');
 var bcrypt = require('bcrypt-nodejs');
 var passport = require('passport');
 var session = require('express-session');
+var models = require('./models');
 var SequelizeStore = require('connect-session-sequelize')(session.Store);
 var LocalStrategy = require('passport-local').Strategy;
+
 
 var db = require('./models/index.js').sequelize;
 db.sync();
@@ -85,6 +87,16 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 /*******************************************************/
+
+app.get('/', function(req, res){
+  console.log(res);
+  var questions = req.params.text;
+
+  models.Store.findAll({where: { questions: text} })
+  .then(function(answers){
+    return answers.getAnswers()
+    })
+})
 
 
 /*app.get('/', function(req, res) {
