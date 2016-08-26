@@ -1,4 +1,4 @@
-(function() {
+function() {
 
 var questions = [{
 	question: "1. Who was the first female monster to appear in a movie? ",
@@ -19,7 +19,7 @@ var questions = [{
 }, {
 	question: "5. Released in 1996, who played Seth Gecko in the hit comedy horror film From Dusk Till Dawn? ",
 	choices: ["George Clooney", "Brendan Frasier", "Quentin Tarantino", "Gerard Butler"],
-	correctAnswer: "George	Clooney"	
+	correctAnswer: "George Clooney"	
 }, {
 	question: "6. Which of these horror films was not directed by Wes Craven? ",
 	choices: ["New Nightmare", "Ginger Snaps", "Red Eye", "Scream"],
