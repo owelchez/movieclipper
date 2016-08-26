@@ -16,14 +16,6 @@ var User = require('./models').User;
 
 var app = express(); // DUH!
 
-/*MySQL connection initialization*/
-/*var connection = mysql.createConnection({
-  host     : 'localhost',
-  user     : 'root',
-  password : '',
-  database : 'movieClip'
-});*/
-
 app.use(bodyParser.urlencoded({ extended: false }))
 
 app.use(methodOverride('_method'));
@@ -32,16 +24,6 @@ app.set('view engine', 'handlebars');
 
 //Serve static content for the app from the "public" directory in the application directory.
 app.use(express.static(__dirname + '/public'));
-
-/*connection.connect(function (err) {
-  if (err) {
-    console.error('error connecting: ' + err.stack);
-    return;
-  }
-  console.log('connected as id ' + connection.threadId);
-});*/
-
-
 
 //--------------------
 //--------------------
@@ -114,7 +96,7 @@ app.use(passport.session());
 })*/
 
 app.get('/', function(req, res) {
-  res.render('login');
+  res.render('home');
 })
 
 /*app.get('/login', function(req, res) {
