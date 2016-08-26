@@ -1,12 +1,13 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
   var Question = sequelize.define('Question', {
-    info: DataTypes.STRING,
-    status: DataTypes.BOOLEAN
+    text: DataTypes.STRING,
+    cAnswerID: DataTypes.INTEGER
   }, {
     classMethods: {
       associate: function(models) {
         // associations can be defined here
+        Question.hasMany(models.User);
       }
     }
   });

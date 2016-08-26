@@ -114,7 +114,7 @@ app.use(passport.session());
 })*/
 
 app.get('/', function(req, res) {
-  res.render('home');
+  res.render('login');
 })
 
 /*app.get('/login', function(req, res) {

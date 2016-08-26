@@ -9,11 +9,11 @@ module.exports = function(sequelize, DataTypes) {
     classMethods: {
       associate: function(models) {
         // associations can be defined here
+        User.hasMany(models.Answer);
+
+
       }
     }
   });
   return User;
 };
-
-
-//Store.belongsToMany(models.Manager, {through: models.ManagerStore});

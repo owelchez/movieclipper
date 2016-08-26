@@ -8,11 +8,11 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      info: {
+      text: {
         type: Sequelize.STRING
       },
-      status: {
-        type: Sequelize.BOOLEAN
+      cAnswerID: {
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,

@@ -1,18 +1,22 @@
 'use strict';
 module.exports = {
   up: function(queryInterface, Sequelize) {
-    return queryInterface.createTable('QuestionAnswers', {
+    return queryInterface.createTable('Answers', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      qID: {
+      QuestionID: {
         type: Sequelize.INTEGER
+        allowNull: true,
       },
-      aID: {
-        type: Sequelize.INTEGER
+      text: {
+        type: Sequelize.STRING
+      },
+      status: {
+        type: Sequelize.BOOLEAN
       },
       createdAt: {
         allowNull: false,
@@ -25,6 +29,6 @@ module.exports = {
     });
   },
   down: function(queryInterface, Sequelize) {
-    return queryInterface.dropTable('QuestionAnswers');
+    return queryInterface.dropTable('Answers');
   }
 };
