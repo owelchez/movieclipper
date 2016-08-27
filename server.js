@@ -33,7 +33,7 @@ app.use(express.static(__dirname + '/public'));
 //--------------------
 //--------------------
 
-passport.use('local', new LocalStrategy(
+/*passport.use('local', new LocalStrategy(
   function(username, password, done) {
     User.findOne( { where: { username: username} } ).then(function(user) {
       if (!user) {
@@ -84,22 +84,17 @@ app.use(session({
   saveUninitialized: true
 }));
 app.use(passport.initialize());
-app.use(passport.session());
+app.use(passport.session());*/
 
 /*******************************************************/
 
-app.get('/', function(req, res){
-  console.log(res);
-  var questions = req.params.text;
-
-  models.Store.findAll({where: { questions: text} })
-  .then(function(answers){
-    return answers.getAnswers()
-    })
+app.get('/', function(req, res) {
+  models.Question.findAll().then(function (questions){
+    res.render('home', { questions: questions});
+  })
 })
 
-
-/*app.get('/', function(req, res) {
+/*app.get('/', function(req, res) 
   if (req.user) {
     res.render('home', { name: req.user.username});
   } else {
@@ -107,9 +102,9 @@ app.get('/', function(req, res){
   }
 })*/
 
-app.get('/', function(req, res) {
+/*app.get('/', function(req, res) {
   res.render('home');
-})
+})*/
 
 /*app.get('/login', function(req, res) {
   res.render('login');
