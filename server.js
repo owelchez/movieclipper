@@ -90,13 +90,23 @@ app.use(passport.session());*/
 
 app.get('/', function(req, res) {
   var questionsArr;
+  var answerArr;
+  var newArray;
   models.Question.findAll().then(function (questions){
     // res.render('home', { questions: questions});
     questionsArr = questions;
   }).then(function() {
     models.Answer.findAll().then(function (answer){
-      console.log(answer)
-      
+      answerArr = answer; // Everything working up to this point
+      for(index = 0; index < questionsArr.length; index++){
+        newArray.push(questionsArr[index]);
+        models.Answer.findAll({where: {QuestionId:index} }).then(function(nuevo){
+
+        })
+
+      }
+
+
       var data = {
         questions: questionsArr,
         answers: answer
