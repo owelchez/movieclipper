@@ -89,9 +89,21 @@ app.use(passport.session());*/
 /*******************************************************/
 
 app.get('/', function(req, res) {
+  var questionsArr;
   models.Question.findAll().then(function (questions){
-    res.render('home', { questions: questions});
-  })
+    // res.render('home', { questions: questions});
+    questionsArr = questions;
+  }).then(function() {
+    models.Answer.findAll().then(function (answer){
+      console.log(answer)
+      
+      var data = {
+        questions: questionsArr,
+        answers: answer
+      }
+      res.render('home', data);
+    })
+  });
 })
 
 /*app.get('/', function(req, res) 

@@ -14,11 +14,19 @@
     <div class="container">
       <div id="triviaQuestions">
         {{#each questions}}
-      	 {{text}}
+          <h2>
+      	   {{text}}
+         </h2>
+          
         {{/each}}
+        <ol>
+          {{#each answers}}
+                <li>
+                  {{text}}
+                </li>
+          {{/each}}
+          </ol>
       </div>
-
-
     </div>
 
 
