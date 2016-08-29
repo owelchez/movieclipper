@@ -88,30 +88,62 @@ app.use(passport.session());*/
 
 /*******************************************************/
 
+
+function findAnswers(value){
+Post.findAll({
+  where: {
+    QuestionId: questionNumber
+  }
+});
+}
+
+
+
+
+app.get('/test', function(req, res){
+  var newAnswer;
+  models.Answer.findAll().then(function(answers){
+    newAnswer = answers;
+  }).then(function(){
+    res.render('test', newAnswer);
+    console.log(newAnswer);
+  })
+})
+
+
+function isQuestionId(value) {
+  var x;
+  models.Answer.findAll().then(function(results){
+    x = results;
+    where: {QuestionId: 1}
+  })
+  return x;
+}
+//var filtered = [12, 5, 8, 130, 44].filter(isBigEnough);
+// filtered is [12, 130, 44]
+
+
+
 app.get('/', function(req, res) {
   var questionsArr;
   var answerArr;
   var newArray;
   models.Question.findAll().then(function (questions){
-    // res.render('home', { questions: questions});
     questionsArr = questions;
   }).then(function() {
     models.Answer.findAll().then(function (answer){
       answerArr = answer; // Everything working up to this point
-      for(index = 0; index < questionsArr.length; index++){
-        newArray.push(questionsArr[index]);
-        models.Answer.findAll({where: {QuestionId:index} }).then(function(nuevo){
-
-        })
-
-      }
+      
+      
 
 
       var data = {
         questions: questionsArr,
         answers: answer
       }
+      
       res.render('home', data);
+      console.log(data);
     })
   });
 })
@@ -124,17 +156,6 @@ app.get('/', function(req, res) {
   }
 })*/
 
-/*app.get('/', function(req, res) {
-  res.render('home');
-})*/
-
-/*app.get('/login', function(req, res) {
-  res.render('login');
-})
-
-app.get('/error', function(req, res) {
-  res.render('error');
-})*/
 
 /*app.post('/login', passport.authenticate('local', { successRedirect: '/', failureRedirect: '/error'}));
 */
@@ -143,31 +164,3 @@ app.get('/error', function(req, res) {
 var PORT = 3000;
 app.listen(PORT);
 console.log('Hackin\' n Slacking on PORT ' + PORT);
-
-
-// Fake Schema
-
-// Questions
-//   1  | "when was ben hur made"
-// id | query |
-
-// Answers
-// 1  | "1974"  | false
-// 2  | "1977"  | true
-// id | info  | status  |
-
-
-// QuestionAnswers
-// 
-// qID    | aID   
-  // 1    | 1
-  // 1    | 2
-
-
-  // UserAnswers
-  // uID| aID
-  // 1| 2
-
-/*var q1 = Questions.getOne({where:{id: 1}})
-  q1.getAnswers({where:{status: true}})
-  q1.getAnswers();*/
