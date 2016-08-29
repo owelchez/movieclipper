@@ -88,6 +88,8 @@ app.use(passport.session());*/
 
 /*******************************************************/
 
+var answersIndex;
+var newArray;
 
 function findAnswers(value){
 Post.findAll({
@@ -111,31 +113,29 @@ app.get('/test', function(req, res){
 })
 
 
-function isQuestionId(value) {
-  var x;
-  models.Answer.findAll().then(function(results){
-    x = results;
-    where: {QuestionId: 1}
-  })
-  return x;
-}
-//var filtered = [12, 5, 8, 130, 44].filter(isBigEnough);
-// filtered is [12, 130, 44]
 
 
 
 app.get('/', function(req, res) {
   var questionsArr;
   var answerArr;
-  var newArray;
+  
   models.Question.findAll().then(function (questions){
     questionsArr = questions;
   }).then(function() {
     models.Answer.findAll().then(function (answer){
       answerArr = answer; // Everything working up to this point
-      
-      
+      for(index = 0; index < questionsArr.length; index++){
 
+      }
+
+      /*This is the key to separate the answer, keep brainstorming*/
+      /*models.Answer.findAll().then(function(answer){
+        console.log(answer[0].text);
+        console.log(answer[1].text);
+        console.log(answer[2].text);
+        console.log(answer[3].text);
+      })*/
 
       var data = {
         questions: questionsArr,
