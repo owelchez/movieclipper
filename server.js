@@ -88,46 +88,60 @@ app.use(passport.session());*/
 
 /*******************************************************/
 
-  var answersIndex;
-  var newArray;
-  var questionsArr;
-  var answerArr;
+  var answersIndex; // This is the index for the answer iteration by QuestionId
+  var newObjArray = []; // This will hold the new Questions and Answers combined
+  var questionsArr []; // This holds the Question table
+  var answerArr; // This holds the Answer table
+  var answerResult;
+  var tempQuestion = {};
+  var tempAnswer;
 
 
 
-function getAnswers(){
-  models.Answer.findAll({where: {QuestionId: answersIndex}}).then(function(result){console.log(result)})
-};
+    function getObject(callback){
+      models.Answer.findAll({where: {QuestionId: answersIndex}})
+      .then(function(result){
+        answerObject = {
+          question: newArray[answersIndex].text,
+          answer1: result[0].text
+        }
+      })
+    };
 
-function TriviaThing(){
+
+   
+
+
+/*function TriviaThing(){
   this.answerStr = 
-}
+}*/
 
 
-  function nuevo(null, null, null, null){
+/*  function Questions(id1){
     this. ,
     this.,
     this.,
     this.
-  }
+  }*/
 
                   /*This is the key to separate the answer, keep brainstorming*/
-          /*models.Answer.findAll({where: {QuestionId: answerIndex}})
-          .then(function(result){var nuevo = result;
-            for(index = 0; index < 4; index++){
-            console.log(nuevo[index].text)
-          }
+        /*  models.Answer.findAll({where: {QuestionId: answerIndex}})
+          .then(function(result){
+          for(index = 0; index < 4; index++){
+              
+              console.log(result[index].text)
+            }
           })*/
 
 
 
-function findAnswers(value){
+/*function findAnswers(value){
 Post.findAll({
   where: {
     QuestionId: questionNumber
   }
 });
-}
+}*/
 
 
 
@@ -143,33 +157,38 @@ app.get('/test', function(req, res){
 })
 
 
+/*Post.findAll({
+  where: {
+    authorId: 12,
+    status: 'active'
+  }
+});*/
+
 
 
 
 app.get('/', function(req, res) {
   models.Question.findAll().then(function (questions){
-    questionsArr = questions;
+    for(index = 0; index < questionsArr.length; index++){
+      questionsArr.push(questions[index].text);
+    }
   }).then(function() {
     models.Answer.findAll().then(function (answer){
-      answerArr = answer; // Everything working up to this point
-      for(index = 0; index < questionsArr.length; index++){
+      answerArr = answer;
+      console.log(questionsArr);
 
-      }
-
-          
-
-    
-
+      
       var data = {
         questions: questionsArr,
         answers: answer
       }
-      
       res.render('home', data);
-      console.log(data);
+      //console.log(data);
     })
   });
 })
+
+/*******************************************************/
 
 /*app.get('/', function(req, res) 
   if (req.user) {
