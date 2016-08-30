@@ -88,8 +88,38 @@ app.use(passport.session());*/
 
 /*******************************************************/
 
-var answersIndex;
-var newArray;
+  var answersIndex;
+  var newArray;
+  var questionsArr;
+  var answerArr;
+
+
+
+function getAnswers(){
+  models.Answer.findAll({where: {QuestionId: answersIndex}}).then(function(result){console.log(result)})
+};
+
+function TriviaThing(){
+  this.answerStr = 
+}
+
+
+  function nuevo(null, null, null, null){
+    this. ,
+    this.,
+    this.,
+    this.
+  }
+
+                  /*This is the key to separate the answer, keep brainstorming*/
+          /*models.Answer.findAll({where: {QuestionId: answerIndex}})
+          .then(function(result){var nuevo = result;
+            for(index = 0; index < 4; index++){
+            console.log(nuevo[index].text)
+          }
+          })*/
+
+
 
 function findAnswers(value){
 Post.findAll({
@@ -117,9 +147,6 @@ app.get('/test', function(req, res){
 
 
 app.get('/', function(req, res) {
-  var questionsArr;
-  var answerArr;
-  
   models.Question.findAll().then(function (questions){
     questionsArr = questions;
   }).then(function() {
@@ -129,13 +156,9 @@ app.get('/', function(req, res) {
 
       }
 
-      /*This is the key to separate the answer, keep brainstorming*/
-      /*models.Answer.findAll().then(function(answer){
-        console.log(answer[0].text);
-        console.log(answer[1].text);
-        console.log(answer[2].text);
-        console.log(answer[3].text);
-      })*/
+          
+
+    
 
       var data = {
         questions: questionsArr,
